@@ -1,0 +1,125 @@
+%-------------------------------------------------------------------------------
+% @file Template of daily notes
+%
+% @compliler xelatex
+% 
+% @copyright XShinHe
+%
+% @date lasted update 2019-09-10
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+% Class of document
+% use English version as default
+\documentclass[UTF8,a4paper,11pt]{article}
+% 如果使用中文版的article文档类型排版
+% \documentclass[UTF8,a4paper,11pt]{ctexart}
+
+%-------------------------------------------------------------------------------
+% 页面设置、目录设置、章节设置
+\usepackage{geometry} % Margins of paper
+\geometry{a4paper, hmargin={3cm, 3cm}, vmargin={2cm, 2cm}}
+
+\usepackage{fancyhdr}   % set for header and footer
+% \pagestyle{fancy}
+
+\usepackage{multicol}   % multiple columns
+% \begin{multicol}{2}
+% 内容...
+% \end{multicol}
+
+\usepackage{titletoc}   % set for TOC(table of cotents) 
+\usepackage{titlesec}   % set for section
+
+%-------------------------------------------------------------------------------
+% 悬浮、图、表、抄录
+
+\usepackage{float}      % set for floating object
+\usepackage{caption}    % set for (float) caption of fig and table
+\usepackage{subfigure}  % set for sub-figure
+\usepackage{graphicx}   % insert picture
+
+\usepackage{tabularx}   % 自动设置表格列宽 
+\usepackage{array}      % 数组和表格制作
+\usepackage{longtable}  % 制作跨页表格 
+\usepackage{colortbl}
+\usepackage{paralist}   % 多种列表环境 
+
+\usepackage{multienum}
+
+\usepackage{fancyvrb}   % 用来得到一些加框的抄录环境，vrb=verbatim
+\usepackage{listings}   % 代码高亮
+\usepackage{algorithm}  % 排版算法 
+
+
+%-------------------------------------------------------------------------------
+% 目录、参考文献、引用
+%\usepackage{multitoc}
+%\usepackage{tocbibind}
+
+\usepackage{fancyref}
+\usepackage{footnote}
+\usepackage{hyperref}   % 创建超文本链接和PDF书签
+
+%-------------------------------------------------------------------------------
+% 正文
+%\usepackage{indentfirst}
+\usepackage{xcolor}     % 颜色处理
+\usepackage{fontspec}   % 字体选择 
+%\usepackage{xeCJK}     % 中日朝文字处理和字体选择
+
+%-------------------------------------------------------------------------------
+% 数学
+\usepackage{calc}       % 提供Latex四则运算
+\usepackage{amsmath}    % 使用宏包，这里使用的是调用公式宏包，可以调用多个宏包
+\usepackage{amssymb}    % 数学符号生成命令（特殊符号的别名集）
+\usepackage{ntheorem}   % 定理设置
+
+
+
+\title{Example}
+
+\author{XshinHe}
+
+\date{\today}
+
+\begin{document}
+\maketitle     %我们写了以上内容以后一定要添加这个，制作标题，否则上面的内容都是无效的。
+\tableofcontents  %表示目录部分开始
+
+\begin{abstract}
+This is a abstract.
+\end{abstract}
+
+
+\section{Sec 1}
+this is first section and a cition\cite{1}.
+
+\footnotesize{\centering footnote on footnotesize}
+
+
+\section{Sec 2}
+this is second section.
+
+
+%-------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{References}
+% Bibiography
+\begin{thebibliography}{9}
+\bibitem{1} Author 1, Author 2, Journal Name, year-xxxx, vol-xx, page-xxx.
+\end{thebibliography}
+
+
+%-------------------------------------------------------------------------------
+% Appendix
+\addcontentsline{toc}{section}{Appendix}  %用来添加文献的标准方式
+\begin{appendix}              
+\section{Appendix 1}
+This is a Appendix.
+\end{appendix}
+%-------------------------------------------------------------------------------
+
+
+
+\end{document}
+
