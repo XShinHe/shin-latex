@@ -1,3 +1,5 @@
+%!TEX program xelatex
+
 %-------------------------------------------------------------------------------
 % @file Template of daily notes
 %
@@ -8,102 +10,169 @@
 % @date lasted update 2019-09-10
 %-------------------------------------------------------------------------------
 
-%-------------------------------------------------------------------------------
-% Class of document
-% use English version as default
-\documentclass[UTF8,a4paper,11pt]{article}
-% 如果使用中文版的article文档类型排版
-% \documentclass[UTF8,a4paper,11pt]{ctexart}
+% for detailed settings, refers (tutorial)[https://www.latexstudio.net/hulatex/]
 
 %-------------------------------------------------------------------------------
-% 页面设置、目录设置、章节设置
+% Class of document
+% \documentclass[UTF8,a4paper,11pt]{article}
+\documentclass[UTF8,a4paper,11pt]{book}
+% \documentclass[UTF8,a0b,posterdraft]{a0poster}
+
+% 如果使用中文版的article文档类型
+% \documentclass[UTF8,a4paper,11pt]{ctexart}
+% \documentclass[UTF8,a4paper,11pt]{ctexbook}
+
+%-------------------------------------------------------------------------------
+% Fonts
+\usepackage{moresize}
+\usepackage{fontenc}        % Europian fonts and so on, i.e. schr\"odinger
+%   for fontenc, provide OT1, OT2, T1 type encoding
+
+%-------------------------------------------------------------------------------
+% Special symbols
+%\usepackage{SIunits}        % SI units, i.e.; confict
+\usepackage{textcomp}       % 标准宏包之一，TS1编码的可使用简单的数理单位和货币符号
+
+%-------------------------------------------------------------------------------
+% Language
+% \usepackage{CJK}          % 中日朝文字处理和字体选择, by latex
+% \usepackage{xeCJK}        % 中日朝文字处理和字体选择, by xelatex
+\usepackage{hyphenat}       % controlling the hyphen
+\usepackage{soul}           % \so, \caps, \ul, \st, \hl
+
+%-------------------------------------------------------------------------------
+% Page settings
+%\usepackage[timestamp,first]{draftcopy}     % watermark as draftcopy
+%\draftcopyVersion{Version 1.0}
+\usepackage{eso-pic}        % add logo
+
+% geometry of the page
 \usepackage{geometry} % Margins of paper
 \geometry{a4paper, hmargin={3cm, 3cm}, vmargin={2cm, 2cm}}
 
-\usepackage{fancyhdr}   % set for header and footer
-% \pagestyle{fancy}
+% Setting Headers and Footers
+\usepackage{fancyhdr}       % set for header and footer
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{Peking University}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\usepackage{indentfirst}
 
-\usepackage{multicol}   % multiple columns
+%-------------------------------------------------------------------------------
+% Title, toc, abstract
+
+%\usepackage{abstract}       % 在双栏页面中排版出单栏的摘要
+\usepackage{enumerate}
+%\usepackage{minitoc}        % \dominitoc, \minitoc 生成章节前小目录
+\usepackage{multicol}       % multiple columns
 % \begin{multicol}{2}
 % 内容...
 % \end{multicol}
 
+\usepackage[conny]{fncychap}       % 6 style for chapter title
+
+\usepackage{titling}
 \usepackage{titletoc}   % set for TOC(table of cotents) 
 \usepackage{titlesec}   % set for section
 
 %-------------------------------------------------------------------------------
-% 悬浮、图、表、抄录
+% Note and footnote
+\usepackage{comment}        % can add notations in latex codes
+\usepackage{footmisc}
+\usepackage{fancyref}
+\usepackage{footnote}
+\usepackage{todonotes}
 
-\usepackage{float}      % set for floating object
-\usepackage{caption}    % set for (float) caption of fig and table
+%-------------------------------------------------------------------------------
+% Bibliograph, bibtex is defualt contained in latex
+%\usepackage{natbib}
+%\usepackage{bibentry}      % dependent on natbib
+%\usepackage{footbib}
+
+%-------------------------------------------------------------------------------
+% graphics
 \usepackage{subfigure}  % set for sub-figure
 \usepackage{graphicx}   % insert picture
 
+%-------------------------------------------------------------------------------
+% tables
 \usepackage{tabularx}   % 自动设置表格列宽 
 \usepackage{array}      % 数组和表格制作
 \usepackage{longtable}  % 制作跨页表格 
-\usepackage{colortbl}
-\usepackage{paralist}   % 多种列表环境 
-
-\usepackage{multienum}
-
-\usepackage{fancyvrb}   % 用来得到一些加框的抄录环境，vrb=verbatim
-\usepackage{listings}   % 代码高亮
-\usepackage{algorithm}  % 排版算法 
-
+%\usepackage{paralist}   % 多种列表环境 
 
 %-------------------------------------------------------------------------------
-% 目录、参考文献、引用
-%\usepackage{multitoc}
-%\usepackage{tocbibind}
-
-\usepackage{fancyref}
-\usepackage{footnote}
-\usepackage{hyperref}   % 创建超文本链接和PDF书签
-
-%-------------------------------------------------------------------------------
-% 正文
-%\usepackage{indentfirst}
-\usepackage{xcolor}     % 颜色处理
-\usepackage{fontspec}   % 字体选择 
-%\usepackage{xeCJK}     % 中日朝文字处理和字体选择
-
-%-------------------------------------------------------------------------------
-% 数学
+% math
 \usepackage{calc}       % 提供Latex四则运算
 \usepackage{amsmath}    % 使用宏包，这里使用的是调用公式宏包，可以调用多个宏包
 \usepackage{amssymb}    % 数学符号生成命令（特殊符号的别名集）
+\usepackage{amstext}
 \usepackage{ntheorem}   % 定理设置
+%\usepackage{easybmat}   % 可能会与 booktabs，array 等表格宏包冲突。
+% \usepackage{bm}       % bold for formula, not support, use \mathbf instand
 
+%-------------------------------------------------------------------------------
+% chem and phys
+\usepackage{mhchem}
 
+%-------------------------------------------------------------------------------
+% verbatim
+\usepackage{fancyvrb}   % 用来得到一些加框的抄录环境
+\usepackage{listings}   % 代码高亮
+\usepackage{algorithm}  % 排版算法 
 
-\title{Example}
+%-------------------------------------------------------------------------------
+% float objects
+\usepackage{float}      % set for floating object
+\usepackage{caption}    % set for (float) caption of fig and table
+%\usepackage{afterpage}
 
-\author{XshinHe}
+%-------------------------------------------------------------------------------
+% Reference and Link
+\usepackage{hyperref}   % 创建超文本链接和PDF书签
 
-\date{\today}
+%-------------------------------------------------------------------------------
+% utils
+\usepackage{xcolor}     % 颜色处理
+
+%-------------------------------------------------------------------------------
+\pagestyle{empty}
+\title{\Huge Group Theorem I}
+\author{Xinzheng Li, noted by Xin He}
+\date{}
 
 \begin{document}
-\maketitle     %我们写了以上内容以后一定要添加这个，制作标题，否则上面的内容都是无效的。
+\maketitle     %我们写了以上内容以后一定要添加这个，制作标题，否则上面的内容都是无效的
+\thispagestyle{empty}
+
+\chapter*{preface}
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+\pagenumbering{Roman}
 \tableofcontents  %表示目录部分开始
 
-\begin{abstract}
-This is a abstract.
-\end{abstract}
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
 
-\section{Sec 1}
+
+\chapter{Chapter 1}
 this is first section and a cition\cite{1}.
 
 \footnotesize{\centering footnote on footnotesize}
 
 
-\section{Sec 2}
-this is second section.
+% \include{chap2} % from chap2.tex file
 
 
 %-------------------------------------------------------------------------------
-\addcontentsline{toc}{section}{References}
+%\addcontentsline{toc}{section}{References}
 % Bibiography
 \begin{thebibliography}{9}
 \bibitem{1} Author 1, Author 2, Journal Name, year-xxxx, vol-xx, page-xxx.
