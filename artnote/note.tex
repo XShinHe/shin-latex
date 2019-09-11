@@ -4,7 +4,7 @@
 % @file Template of daily notes
 %
 % @compliler xelatex
-% 
+%
 % @copyright XShinHe
 %
 % @date lasted update 2019-09-10
@@ -14,8 +14,8 @@
 
 %-------------------------------------------------------------------------------
 % Class of document
-% \documentclass[UTF8,a4paper,11pt]{article}
-\documentclass[UTF8,a4paper,11pt]{book}
+\documentclass[UTF8,a4paper,11pt]{article}
+% \documentclass[UTF8,a4paper,11pt]{book}
 % \documentclass[UTF8,a0b,posterdraft]{a0poster}
 
 % 如果使用中文版的article文档类型
@@ -72,10 +72,12 @@
 % 内容...
 % \end{multicol}
 
-\usepackage[conny]{fncychap}       % 6 style for chapter title
+\usepackage[Lenny]{fncychap}       % 6 style for chapter title
+\ChNameVar{\Large\rm}
+\ChNumVar{\Huge}
 
 \usepackage{titling}
-\usepackage{titletoc}   % set for TOC(table of cotents) 
+\usepackage{titletoc}   % set for TOC(table of cotents)
 \usepackage{titlesec}   % set for section
 
 %-------------------------------------------------------------------------------
@@ -99,10 +101,10 @@
 
 %-------------------------------------------------------------------------------
 % tables
-\usepackage{tabularx}   % 自动设置表格列宽 
+\usepackage{tabularx}   % 自动设置表格列宽
 \usepackage{array}      % 数组和表格制作
-\usepackage{longtable}  % 制作跨页表格 
-%\usepackage{paralist}   % 多种列表环境 
+\usepackage{longtable}  % 制作跨页表格
+%\usepackage{paralist}   % 多种列表环境
 
 %-------------------------------------------------------------------------------
 % math
@@ -111,18 +113,31 @@
 \usepackage{amssymb}    % 数学符号生成命令（特殊符号的别名集）
 \usepackage{amstext}
 \usepackage{ntheorem}   % 定理设置
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{axm}[thm]{axiom}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+
+\newtheorem{exmp}{Example}[chapter]
+\newtheorem{prf}{Proof}[chapter]
+\newtheorem{rem}[prf]{Remark}
+\newtheorem{ill}[prf]{Illustration}
+
 %\usepackage{easybmat}   % 可能会与 booktabs，array 等表格宏包冲突。
 % \usepackage{bm}       % bold for formula, not support, use \mathbf instand
 
 %-------------------------------------------------------------------------------
 % chem and phys
-\usepackage{mhchem}
+%\usepackage{mhchem}
 
 %-------------------------------------------------------------------------------
 % verbatim
 \usepackage{fancyvrb}   % 用来得到一些加框的抄录环境
 \usepackage{listings}   % 代码高亮
-\usepackage{algorithm}  % 排版算法 
+\usepackage{algorithm}  % 排版算法
 
 %-------------------------------------------------------------------------------
 % float objects
@@ -140,7 +155,7 @@
 
 %-------------------------------------------------------------------------------
 \pagestyle{empty}
-\title{\Huge Group Theorem I}
+\title{\Huge Group Theory I}
 \author{Xinzheng Li, noted by Xin He}
 \date{}
 
@@ -148,7 +163,8 @@
 \maketitle     %我们写了以上内容以后一定要添加这个，制作标题，否则上面的内容都是无效的
 \thispagestyle{empty}
 
-\chapter*{preface}
+%\chapter*{preface}
+\include{prefs}
 \thispagestyle{empty}
 \newpage
 
@@ -160,35 +176,11 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-
-
-\chapter{Chapter 1}
-this is first section and a cition\cite{1}.
-
-\footnotesize{\centering footnote on footnotesize}
-
-
+\include{chap1}
 % \include{chap2} % from chap2.tex file
 
-
-%-------------------------------------------------------------------------------
-%\addcontentsline{toc}{section}{References}
-% Bibiography
-\begin{thebibliography}{9}
-\bibitem{1} Author 1, Author 2, Journal Name, year-xxxx, vol-xx, page-xxx.
-\end{thebibliography}
-
-
-%-------------------------------------------------------------------------------
-% Appendix
-\addcontentsline{toc}{section}{Appendix}  %用来添加文献的标准方式
-\begin{appendix}              
-\section{Appendix 1}
-This is a Appendix.
-\end{appendix}
-%-------------------------------------------------------------------------------
-
-
+\include{biblo}
+\include{appen}
 
 \end{document}
 
